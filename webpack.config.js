@@ -3,8 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+
 module.exports = {
   entry: {
     app: "./src/index.js",
@@ -37,16 +36,6 @@ module.exports = {
         ],
       },
 
-      // {
-      //   test: /\.svg/,
-      //   use: {
-      //     loader: "url-loader",
-      //     loader: "svg-url-loader",
-      //     loader: "file-loader",
-      //     options: {},
-      //   },
-      // },
-
       {
         test: /.s?css$/,
         exclude: /bootstrap\.scss$/i,
@@ -60,35 +49,23 @@ module.exports = {
 
       {
         test: /bootstrap\.scss$/i,
-        use: [MiniCssExtractPlugin.loader, "rtl-css-loader",'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, "rtl-css-loader", "sass-loader"],
       },
 
       {
-        test: /\.(svg|eot|woff|woff2|ttf)$/,
-        exclude: /images/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "./fonts/[name].[ext]",
-              outputPath: "assets/fonts",
-            },
-          },
-        ],
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: "./images/[name][ext]"
+        }
       },
 
       {
-        test: /\.(png|svg|jpe?g|gif)$/,
-        exclude: /fonts/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "assets/images",
-            },
-          },
-        ],
+        test: /\.(svg|eot|woff|woff2|ttf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: "./fonts/[name][ext]"
+        }
       },
 
       {

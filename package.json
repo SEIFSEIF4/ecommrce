@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack serve --mode production",
-    "dev": "webpack serve --mode development",
-    "create": "node src/scripts/create.js"
+    "dev": "webpack serve --mode development"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +14,8 @@
     "@fortawesome/fontawesome-free": "^6.3.0",
     "@popperjs/core": "^2.11.7",
     "bootstrap": "^5.2.0",
-    "chart.js": "^2.9.4",
     "clean-webpack-plugin": "^4.0.0",
     "dev-server": "^0.2.0",
-    "favicons-webpack-plugin": "^6.0.0",
     "html-webpack-partials-plugin": "^0.8.0",
     "normalize.css": "^8.0.1",
     "postcss-preset-env": "^8.3.2",
